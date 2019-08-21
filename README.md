@@ -1,5 +1,5 @@
 ### population-simulation
 
-Visual population simulation. Squares bouncing off of each other and stuff.
+Visual population simulation. Circles bouncing off of each other and stuff.
 
 ![demonstration](demonstration.gif)
