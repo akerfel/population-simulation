@@ -1,8 +1,8 @@
 public class Animal {
-  float r = 20;  // radius
+  public float r = 20;  // radius
   
-  float x = 10;
-  float y = 10;
+  public float x = 10;
+  public float y = 10;
   
   float vx = 1;
   float vy = 0;
@@ -16,6 +16,25 @@ public class Animal {
     this.y = y;
     fixPos();
     randomizeColor();
+  }
+  
+  void checkAnimalCollision(Animal animal) {
+    //float distance = dist(this.x, this.y, animal.x, animal.y);
+    float distance = dist(this.x, this.y, animal.x, animal.y);
+    if (distance <= this.r + animal.r) {
+      vx *= -1;
+      vy *= -1;
+    }
+    
+    println("----------");
+    println("thisx: ", this.x);
+    println("thisy: ", this.y);
+    println("animalx: ", animal.x);
+    println("animaly: ", animal.y);
+    println("distance: ", distance);
+    println("thisr: ", this.r);
+    println("animalr: ", animal.r);
+    println("----------");
   }
   
   void randomizeColor() {

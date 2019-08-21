@@ -18,6 +18,11 @@ void draw() {
   clear();
   for (Animal animal : animals) {
     animal.update();
+    for (Animal animal2: animals) {
+      if (animal != animal2) {
+        animal.checkAnimalCollision(animal2);
+      }
+    }
     animal.draw();
   }
 }
