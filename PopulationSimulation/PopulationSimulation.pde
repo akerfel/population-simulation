@@ -1,4 +1,5 @@
 ArrayList<Animal> animals = new ArrayList<Animal>();
+int numAnimals = 10;
 
 void setup() {
   size(600, 400);
@@ -6,7 +7,7 @@ void setup() {
 }
 
 void makeAnimals() {
-  for (int i = 0; i < 1000; i++) {
+  for (int i = 0; i < numAnimals; i++) {
     float startx = random(0, width);
     float starty = random(0, height);
     animals.add(new Animal(startx, starty));
