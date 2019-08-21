@@ -22,8 +22,8 @@ public class Animal {
     //float distance = dist(this.x, this.y, animal.x, animal.y);
     float distance = dist(this.x, this.y, animal.x, animal.y);
     if (distance <= this.r + animal.r) {
-      vx *= -1;
-      vy *= -1;
+      this.invertVelocity();
+      animal.invertVelocity();
     }
     
     println("----------");
@@ -35,6 +35,11 @@ public class Animal {
     println("thisr: ", this.r);
     println("animalr: ", animal.r);
     println("----------");
+  }
+  
+  void invertVelocity() {
+    vx *= -1;
+    vy *= -1;
   }
   
   void randomizeColor() {
@@ -92,7 +97,7 @@ public class Animal {
   }
   
   void changevx() {
-    vx += random(-0.5, 0.5);
+    vx += random(-1.5, 1.5);
   }
   
   void draw() {
