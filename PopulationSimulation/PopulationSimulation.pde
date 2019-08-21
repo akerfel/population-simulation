@@ -1,8 +1,8 @@
 ArrayList<Animal> animals = new ArrayList<Animal>();
-int numAnimals = 10;
+int numAnimals = 29;
 
 void setup() {
-  size(600, 400);
+  size(400, 600);
   makeAnimals();
 }
 

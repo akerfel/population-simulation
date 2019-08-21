@@ -24,17 +24,30 @@ public class Animal {
     if (distance <= this.r + animal.r) {
       this.invertVelocity();
       animal.invertVelocity();
+      
+      if (this.x > animal.x) {
+        this.x += 5;  
+      }
+      if (this.x < animal.x) {
+        this.y -= 5;  
+      }
+      if (this.y > animal.y) {
+        this.y += 5;  
+      }
+      if (this.y < animal.y) {
+        this.y -= 5;  
+      }
+      
+      println("----------");
+      println("thisx: ", this.x);
+      println("thisy: ", this.y);
+      println("animalx: ", animal.x);
+      println("animaly: ", animal.y);
+      println("distance: ", distance);
+      println("thisr: ", this.r);
+      println("animalr: ", animal.r);
+      println("----------");
     }
-    
-    println("----------");
-    println("thisx: ", this.x);
-    println("thisy: ", this.y);
-    println("animalx: ", animal.x);
-    println("animaly: ", animal.y);
-    println("distance: ", distance);
-    println("thisr: ", this.r);
-    println("animalr: ", animal.r);
-    println("----------");
   }
   
   void invertVelocity() {
