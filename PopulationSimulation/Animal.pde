@@ -64,7 +64,7 @@ public class Animal {
       y = height - r - 5;
     }
     if (x > width - r) {
-      x = height - r - 5;
+      x = width - r - 5;
     }
   }
   

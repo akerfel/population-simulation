@@ -1,5 +1,5 @@
 ArrayList<Animal> animals = new ArrayList<Animal>();
-int numAnimals = 29;
+int numAnimals = 15;
 
 void setup() {
   size(400, 600);
