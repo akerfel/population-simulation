@@ -1,6 +1,5 @@
 public class Animal {
-  float w = 20;
-  float h = 20;
+  float r = 20;  // radius
   
   float x = 10;
   float y = 10;
@@ -24,11 +23,11 @@ public class Animal {
   }
   
   void fixPos() {
-    if (y > height - h) {
-      y = height - h - 5;
+    if (y > height - r) {
+      y = height - r - 5;
     }
-    if (x > width - w) {
-      x = height - w - 5;
+    if (x > width - r) {
+      x = height - r - 5;
     }
   }
   
@@ -37,9 +36,6 @@ public class Animal {
   }
   
   void calcvy() {
-      if (vx > v) {
-        vx = v;  
-      }
       if (vy > 0) {
         vy = sqrt(abs(pow(v, 2) - pow(vx, 2)));
       }
@@ -51,10 +47,29 @@ public class Animal {
   void update() {
     changevx();
     calcvy();
+    limitvx();
+    limitvy();
     x += vx;
     y += vy;
     checkWall();
-    rect(x, y, w, h);
+  }
+  
+  void limitvx() {
+    if (vx > v) {
+        vx = v;  
+      }
+    else if (vx < -v) {
+      vx = -v;  
+    }
+  }
+  
+  void limitvy() {
+    if (vy > v) {
+        vy = v;  
+      }
+    else if (vy < -v) {
+      vy = -v;  
+    }
   }
   
   void changevx() {
@@ -63,23 +78,23 @@ public class Animal {
   
   void draw() {
     fill(c);
-    rect(x, y, w, h);  
+    circle(x, y, r * 2);  
   }
   
   void checkWall() {
-    if (y < 0) {
+    if (y < r) {
       vy *= -1;
       y += 5;
     }
-    if (y > height - h) {
+    if (y > height - r) {
       vy *= -1;
       y -= 5;
     }
-    if (x < 0) {
+    if (x < r) {
       vx *= -1;
       x += 5;
     }
-    if (x > width - w) {
+    if (x > width - r) {
       vx *= -1;  
       x -= 5;
     }
