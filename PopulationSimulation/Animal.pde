@@ -9,11 +9,18 @@ public class Animal {
   float vy = 0;
   float v = 3;
   
+  color c;
+  
   Animal(float x, float y) {
     setStartvx();
     this.x = x;
     this.y = y;
     fixPos();
+    randomizeColor();
+  }
+  
+  void randomizeColor() {
+    c = color(random(0, 255), random(0, 255), random(0, 255));
   }
   
   void fixPos() {
@@ -50,7 +57,12 @@ public class Animal {
     rect(x, y, w, h);
   }
   
+  void changevx() {
+    vx += random(-0.5, 0.5);
+  }
+  
   void draw() {
+    fill(c);
     rect(x, y, w, h);  
   }
   
@@ -73,7 +85,6 @@ public class Animal {
     }
   }
   
-  
   void printLocation() {
     println("--------");
     println("x: ", x);
@@ -83,9 +94,5 @@ public class Animal {
     float currentv = sqrt(pow(vx, 2) + pow(vy, 2));
     println("currentv: ", currentv);
     println("--------");
-  }
-  
-  void changevx() {
-    vx += random(-0.5, 0.5);
   }
 }
