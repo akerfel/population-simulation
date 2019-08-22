@@ -18,42 +18,39 @@ public class Animal {
     randomizeColor();
   }
   
-  boolean checkAnimalCollision(Animal animal) {
-    //float distance = dist(this.x, this.y, animal.x, animal.y);
+  void bounceOffAnimal(Animal animal) {
+    this.invertVelocity();
+    animal.invertVelocity();
     
-    
-    if (collide(animal)) {
-      this.invertVelocity();
-      animal.invertVelocity();
-      
-      if (this.x > animal.x) {
-        this.x += 5;  
-      }
-      if (this.x < animal.x) {
-        this.y -= 5;  
-      }
-      if (this.y > animal.y) {
-        this.y += 5;  
-      }
-      if (this.y < animal.y) {
-        this.y -= 5;  
-      }
-      
-      println("----------");
-      println("thisx: ", this.x);
-      println("thisy: ", this.y);
-      println("animalx: ", animal.x);
-      println("animaly: ", animal.y);
-      println("distance: ", dist(this.x, this.y, animal.x, animal.y));
-      println("thisr: ", this.r);
-      println("animalr: ", animal.r);
-      println("----------");
-      return true;
+    if (this.x > animal.x) {
+      this.x += 5;  
     }
-    return false;
+    if (this.x < animal.x) {
+      this.y -= 5;  
+    }
+    if (this.y > animal.y) {
+      this.y += 5;  
+    }
+    if (this.y < animal.y) {
+      this.y -= 5;  
+    }
+    
+    println("----------");
+    println("thisx: ", this.x);
+    println("thisy: ", this.y);
+    println("animalx: ", animal.x);
+    println("animaly: ", animal.y);
+    println("distance: ", dist(this.x, this.y, animal.x, animal.y));
+    println("thisr: ", this.r);
+    println("animalr: ", animal.r);
+    println("----------");
   }
   
-  boolean collide(Animal animal) {
+  void grow(float radiusGrowth) {
+    r += radiusGrowth;  
+  }
+  
+  boolean collidingWith(Animal animal) {
     float distance = dist(this.x, this.y, animal.x, animal.y);
     return (distance <= this.r + animal.r); 
   }

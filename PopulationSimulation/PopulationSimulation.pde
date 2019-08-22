@@ -1,5 +1,7 @@
+import java.util.Iterator;
+
 ArrayList<Animal> animals = new ArrayList<Animal>();
-int numAnimals = 15;
+int numAnimals = 25;
 boolean eatAtCollision = true;
 
 void setup() {
@@ -17,13 +19,24 @@ void makeAnimals() {
 
 void draw() {
   clear();
+  ArrayList<Animal> toRemove = new ArrayList<Animal>();
   for (Animal animal : animals) {
     animal.update();
-    for (Animal animal2: animals) {
-      if (animal != animal2) {
-        animal.checkAnimalCollision(animal2);
+    for (Animal animal2 : animals) {
+      if (animal != animal2 && !toRemove.contains(animal2) && !toRemove.contains(animal)) {
+        if (animal.collidingWith(animal2)) {
+          if (eatAtCollision) {
+            animal.grow(animal2.r/2);
+            toRemove.add(animal2);
+            break;
+          }
+          else {
+            animal.bounceOffAnimal(animal2);  
+          }
+        }
       }
     }
     animal.draw();
   }
+  animals.removeAll(toRemove);
 }
