@@ -50,6 +50,10 @@ public class Animal {
     r += radiusGrowth;  
   }
   
+  boolean biggerThan(Animal animal) {
+    return this.r >= animal.r;  
+  }
+  
   boolean collidingWith(Animal animal) {
     float distance = dist(this.x, this.y, animal.x, animal.y);
     return (distance <= this.r + animal.r); 

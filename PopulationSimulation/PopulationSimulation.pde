@@ -40,9 +40,9 @@ void draw() {
   animals.removeAll(toRemove);
 }
 
-// if a is bigger than b, then a grows and b is returned. And vice versa.
+// The biggest animal grows. The smallest animal is returned.
 Animal animalSizeFight(Animal a, Animal b) {
-  if (a.r >= b.r) {
+  if (a.biggerThan(b)) {
     a.grow(b.r/4);
     return b;
   }
