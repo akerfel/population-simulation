@@ -1,12 +1,12 @@
 public class Animal {
-  public float r = 20;  // radius
+  public float r = 10;  // radius
   
   public float x = 10;
   public float y = 10;
   
   float vx = 0.5;
   float vy = 0;
-  float v = 5;
+  float v = 3;
   
   color c;
   

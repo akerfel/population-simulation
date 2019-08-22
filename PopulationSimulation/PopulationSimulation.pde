@@ -1,11 +1,11 @@
 import java.util.Iterator;
 
 ArrayList<Animal> animals = new ArrayList<Animal>();
-int numAnimals = 10;
-boolean eatAtCollision = false;
+int numAnimals = 100;
+boolean eatAtCollision = true;
 
 void setup() {
-  size(400, 600);
+  size(600, 900);
   makeAnimals();
 }
 
@@ -24,18 +24,18 @@ void draw() {
     animal.update();  
   }
   
-  for (Animal animal : animals) {
-    for (Animal animal2 : animals) {
-      if (animal.collidingWith(animal2) && animal != animal2) {
+  for (Animal a : animals) {
+    for (Animal b : animals) {
+      if (a.collidingWith(b) && a != b) {
         if (eatAtCollision) {
-          toRemove.add(animalSizeFight(animal, animal2));
+          toRemove.add(animalSizeFight(a, b));
         }
         else {
-          animal.bounceOffAnimal(animal2);  
+          a.bounceOffAnimal(b);  
         }
       }
     }
-    animal.draw();
+    a.draw();
   }
   animals.removeAll(toRemove);
 }
