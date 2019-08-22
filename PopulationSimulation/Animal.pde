@@ -1,5 +1,5 @@
 public class Animal {
-  public float r = 30;  // radius
+  public float r = 15;  // radius
   
   public float x = 10;
   public float y = 10;
@@ -39,7 +39,7 @@ public class Animal {
     if (this.y < animal.y) {
       this.y -= 5;  
     }
-    
+    /*
     println("----------");
     println("thisx: ", this.x);
     println("thisy: ", this.y);
@@ -49,6 +49,7 @@ public class Animal {
     println("thisr: ", this.r);
     println("animalr: ", animal.r);
     println("----------");
+    */
   }
   
   void grow(float radiusGrowth) {
