@@ -1,5 +1,5 @@
 public class Animal {
-  public float r = 10;  // radius
+  public float r = 30;  // radius
   
   public float x = 10;
   public float y = 10;
@@ -15,7 +15,12 @@ public class Animal {
     this.x = x;
     this.y = y;
     fixPos();
-    randomizeColor();
+    if (colorAlliance) {
+      chooseClanColor();
+    }
+    else {
+      randomizeColor();
+    }
   }
   
   void bounceOffAnimal(Animal animal) {
@@ -64,8 +69,13 @@ public class Animal {
     vy *= -1;
   }
   
+  void chooseClanColor() {
+    int clanNumber = int(random(0, clanColors.size()));
+    c = clanColors.get(clanNumber);
+  }
+  
   void randomizeColor() {
-    c = color(random(0, 255), random(0, 255), random(0, 255));
+    c = color(10 * random(0, 25), random(0, 255), random(0, 255));
   }
   
   void fixPos() {

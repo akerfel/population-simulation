@@ -1,12 +1,25 @@
 import java.util.Iterator;
 
 ArrayList<Animal> animals = new ArrayList<Animal>();
-int numAnimals = 100;
+int numAnimals = 15;
 boolean eatAtCollision = true;
+boolean colorAlliance = true;    // if true: balls of same color will not eat each other
+int clans = 2;                  // number of clans (relating to colorAlliance)
+ArrayList<Integer> clanColors = new ArrayList<Integer>();       // List of clan colors
 
 void setup() {
   size(600, 900);
+  println(clans);
+  makeClanColors();
   makeAnimals();
+}
+
+void makeClanColors() {
+  println(clans);
+  for (int i = 0; i < clans; i++) {
+    clanColors.add(color(random(0, 255), random(0, 255), random(0, 255)));
+    print("ey");
+  }
 }
 
 void makeAnimals() {
@@ -28,7 +41,17 @@ void draw() {
     for (Animal b : animals) {
       if (a.collidingWith(b) && a != b) {
         if (eatAtCollision) {
-          toRemove.add(animalSizeFight(a, b));
+          if (colorAlliance) {
+            if (a.c != b.c) {
+              toRemove.add(animalSizeFight(a, b));
+            }
+            else {
+              a.bounceOffAnimal(b);  
+            }
+          }
+          else {
+            toRemove.add(animalSizeFight(a, b));
+          }
         }
         else {
           a.bounceOffAnimal(b);  
