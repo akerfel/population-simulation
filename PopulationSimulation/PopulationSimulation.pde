@@ -1,8 +1,8 @@
 import java.util.Iterator;
 
 ArrayList<Animal> animals = new ArrayList<Animal>();
-int numAnimals = 25;
-boolean eatAtCollision = true;
+int numAnimals = 10;
+boolean eatAtCollision = false;
 
 void setup() {
   size(400, 600);
@@ -21,22 +21,33 @@ void draw() {
   clear();
   ArrayList<Animal> toRemove = new ArrayList<Animal>();
   for (Animal animal : animals) {
-    animal.update();
+    animal.update();  
+  }
+  
+  for (Animal animal : animals) {
     for (Animal animal2 : animals) {
-      if (animal != animal2 && !toRemove.contains(animal2) && !toRemove.contains(animal)) {
-        if (animal.collidingWith(animal2)) {
-          if (eatAtCollision) {
-            animal.grow(animal2.r/2);
-            toRemove.add(animal2);
-            break;
-          }
-          else {
-            animal.bounceOffAnimal(animal2);  
-          }
+      if (animal.collidingWith(animal2) && animal != animal2) {
+        if (eatAtCollision) {
+          toRemove.add(animalSizeFight(animal, animal2));
+        }
+        else {
+          animal.bounceOffAnimal(animal2);  
         }
       }
     }
     animal.draw();
   }
   animals.removeAll(toRemove);
+}
+
+// if a is bigger than b, then a grows and b is returned. And vice versa.
+Animal animalSizeFight(Animal a, Animal b) {
+  if (a.r >= b.r) {
+    a.grow(b.r/4);
+    return b;
+  }
+  else {
+    b.grow(a.r/4);
+    return a;
+  }
 }

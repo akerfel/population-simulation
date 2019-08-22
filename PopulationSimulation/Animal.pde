@@ -4,9 +4,9 @@ public class Animal {
   public float x = 10;
   public float y = 10;
   
-  float vx = 1;
+  float vx = 0.5;
   float vy = 0;
-  float v = 3;
+  float v = 5;
   
   color c;
   
@@ -85,10 +85,18 @@ public class Animal {
         vy = -sqrt(abs(pow(v, 2) - pow(vx, 2)));
       }
   }
+  
+  void calcvx() {
+      if (vx > 0) {
+        vx = sqrt(abs(pow(v, 2) - pow(vy, 2)));
+      }
+      else {
+        vx = -sqrt(abs(pow(v, 2) - pow(vy, 2)));
+      }
+  }
 
   void update() {
-    changevx();
-    calcvy();
+    changedirection();
     limitvx();
     limitvy();
     x += vx;
@@ -114,8 +122,15 @@ public class Animal {
     }
   }
   
-  void changevx() {
-    vx += random(-1.5, 1.5);
+  void changedirection() {
+    if (random(0, 1) > 0.5) {
+      vx += random(-1.5, 1.5);
+      calcvy();
+    }
+    else {
+      vy += random(-1.5, 1.5);
+      calcvx();
+    }
   }
   
   void draw() {
