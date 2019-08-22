@@ -18,10 +18,11 @@ public class Animal {
     randomizeColor();
   }
   
-  void checkAnimalCollision(Animal animal) {
+  boolean checkAnimalCollision(Animal animal) {
     //float distance = dist(this.x, this.y, animal.x, animal.y);
-    float distance = dist(this.x, this.y, animal.x, animal.y);
-    if (distance <= this.r + animal.r) {
+    
+    
+    if (collide(animal)) {
       this.invertVelocity();
       animal.invertVelocity();
       
@@ -43,11 +44,18 @@ public class Animal {
       println("thisy: ", this.y);
       println("animalx: ", animal.x);
       println("animaly: ", animal.y);
-      println("distance: ", distance);
+      println("distance: ", dist(this.x, this.y, animal.x, animal.y));
       println("thisr: ", this.r);
       println("animalr: ", animal.r);
       println("----------");
+      return true;
     }
+    return false;
+  }
+  
+  boolean collide(Animal animal) {
+    float distance = dist(this.x, this.y, animal.x, animal.y);
+    return (distance <= this.r + animal.r); 
   }
   
   void invertVelocity() {

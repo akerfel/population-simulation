@@ -1,5 +1,6 @@
 ArrayList<Animal> animals = new ArrayList<Animal>();
 int numAnimals = 15;
+boolean eatAtCollision = true;
 
 void setup() {
   size(400, 600);
