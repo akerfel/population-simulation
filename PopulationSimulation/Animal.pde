@@ -1,5 +1,5 @@
 public class Animal {
-  public float r = 15;  // radius
+  public float r = 4;  // radius
   
   public float x = 10;
   public float y = 10;

@@ -1,14 +1,14 @@
 import java.util.Iterator;
 
 // Some settings variables to experiment with
-int numAnimals = 100;
+int numAnimals = 1000;
 boolean automaticRestart = true;
 int timeToRestart = 180;
 
 // Clan related stuff
 boolean eatAtCollision = true;    // If false: balls always bounce off each other
 boolean colorAlliance = true;    // if true: balls of same color will not eat each other
-int clans = 2;                  // number of clans (relating to colorAlliance)
+int clans = 3;                  // number of clans (relating to colorAlliance)
 boolean fellowshipGrowth;
 
 // Other
