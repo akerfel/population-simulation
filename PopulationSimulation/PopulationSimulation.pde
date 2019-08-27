@@ -127,11 +127,11 @@ boolean oneClanLeft() {
 // The biggest animal grows. The smallest animal is returned.
 Animal animalSizeFight(Animal a, Animal b) {
   if (a.biggerThan(b)) {
-    a.grow(b.r/8);
+    a.grow(b.r/6);
     return b;
   }
   else {
-    b.grow(a.r/8);
+    b.grow(a.r/6);
     return a;
   }
 }

@@ -172,6 +172,14 @@ public class Animal {
     }
   }
   
+  float getArea() {
+    return r * r * PI;
+  }
+  
+  void addAnimalsVolume(Animal animal) {
+     
+  }
+  
   void printLocation() {
     println("--------");
     println("x: ", x);
