@@ -1,6 +1,6 @@
 ### population-simulation
 
-Visual population simulation. Balls bouncing off of each other and stuff.
+Population simulation. Bigger entities eat smaller entities.
 
 ![bouncing](bouncing.gif)
 
